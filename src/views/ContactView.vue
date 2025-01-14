@@ -41,7 +41,10 @@ const handleValidateClick = (e) => {
     if (!errors) {
       // 表单验证通过，发送数据到服务器
       axios
-        .post("https://infoserver-v0eq.onrender.com", formValue.value)
+        .post(
+          "https://infoserver-v0eq.onrender.com/api/submit",
+          formValue.value
+        )
         .then((response) => {
           message.success("提交成功！");
           formValue.value = {
