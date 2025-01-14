@@ -1,0 +1,100 @@
+<script setup>
+import { ref } from "vue";
+import { useMessage } from "naive-ui";
+import { NForm, NFormItem, NInput, NButton, NCard } from "naive-ui";
+import axios from "axios";
+
+const formRef = ref(null);
+const message = useMessage();
+
+const formValue = ref({
+  user: {
+    name: "",
+    email: "",
+    message: "",
+  },
+});
+
+const rules = {
+  user: {
+    name: {
+      required: true,
+      message: "請輸入姓名",
+      trigger: "blur",
+    },
+    email: {
+      required: true,
+      message: "請輸入Email",
+      trigger: ["input", "blur"],
+    },
+    message: {
+      required: true,
+      message: "請輸入訊息",
+      trigger: ["input"],
+    },
+  },
+};
+
+const handleValidateClick = (e) => {
+  e.preventDefault();
+  formRef.value?.validate((errors) => {
+    if (!errors) {
+      // 表单验证通过，发送数据到服务器
+      axios
+        .post("http://localhost:3000/api/submit", formValue.value)
+        .then((response) => {
+          message.success("提交成功！");
+          formValue.value = {
+            user: {
+              name: "",
+              email: "",
+              message: "",
+            },
+          }; // 手动清空表单内容
+        })
+        .catch((error) => {
+          message.error("提交失敗，請再試一次");
+          console.error(error);
+        });
+    } else {
+      console.log(errors);
+      message.error("提交失敗，請再試一次");
+    }
+  });
+};
+</script>
+
+<template>
+  <div>
+    <n-card title="聯絡我" bordered>
+      <n-form ref="formRef" :label-width="80" :model="formValue" :rules="rules">
+        <n-form-item label="姓名" path="user.name">
+          <n-input
+            v-model:value="formValue.user.name"
+            placeholder="請輸入您的姓名"
+          />
+        </n-form-item>
+        <n-form-item label="Email" path="user.email">
+          <n-input
+            v-model:value="formValue.user.email"
+            placeholder="請輸入您的 Email"
+          />
+        </n-form-item>
+        <n-form-item label="訊息" path="user.message">
+          <n-input
+            type="textarea"
+            v-model:value="formValue.user.message"
+            placeholder="請輸入您的訊息"
+          />
+        </n-form-item>
+        <n-form-item>
+          <n-button attr-type="button" @click="handleValidateClick">
+            提交
+          </n-button>
+        </n-form-item>
+      </n-form>
+    </n-card>
+  </div>
+</template>
+
+<style scoped></style>
