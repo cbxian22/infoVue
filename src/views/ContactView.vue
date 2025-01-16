@@ -4,6 +4,7 @@ import { useMessage } from "naive-ui";
 import { NForm, NFormItem, NInput, NButton, NCard, NSpin } from "naive-ui";
 import axios from "axios";
 
+const loading = ref(false);
 const formRef = ref(null);
 const message = useMessage();
 
@@ -17,44 +18,66 @@ const formValue = ref({
 
 const rules = {
   user: {
-    name: {
-      required: true,
-      message: "請輸入姓名",
-      trigger: "blur",
-    },
-    email: {
-      required: true,
-      message: "請輸入Email",
-      trigger: ["input", "blur"],
-      validator: (rule, value) => {
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailPattern.test(value)) {
-          return new Error("請輸入有效的 Email");
-        }
-        return true;
+    name: [
+      {
+        required: true,
+        message: "請輸入姓名",
+        trigger: "submit",
       },
-    },
-    message: {
-      required: true,
-      message: "請輸入訊息",
-      trigger: ["input"],
-      validator: (rule, value) => {
-        if (value.trim().length < 5) {
-          return new Error("訊息至少需要5個字");
-        }
-        return true;
+      {
+        validator: (rule, value) => {
+          if (!value) return true; // 如果為空交給 required 檢查
+          if (value.trim().length < 2) {
+            return new Error("姓名至少需要2個字");
+          }
+          return true;
+        },
+        trigger: "blur",
       },
-    },
+    ],
+    email: [
+      {
+        required: true,
+        message: "請輸入Email",
+        trigger: "submit",
+      },
+      {
+        validator: (rule, value) => {
+          if (!value) return true;
+          const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailPattern.test(value)) {
+            return new Error("請輸入有效的 Email");
+          }
+          return true;
+        },
+        trigger: "blur",
+      },
+    ],
+    message: [
+      {
+        required: true,
+        message: "請輸入訊息",
+        trigger: "submit",
+      },
+      {
+        validator: (rule, value) => {
+          if (!value) return true;
+          if (value.trim().length < 10) {
+            return new Error("訊息至少需要10個字");
+          }
+          return true;
+        },
+        trigger: "blur",
+      },
+    ],
   },
 };
-
-const loading = ref(false);
 
 const handleValidateClick = (e) => {
   e.preventDefault();
   formRef.value?.validate((errors) => {
     if (!errors) {
-      //
+      // 啟動圓圈圈
       loading.value = true;
       axios
         .post(
@@ -63,24 +86,25 @@ const handleValidateClick = (e) => {
         )
         .then((response) => {
           message.success("提交成功！");
+          // 手动清空表单内容
           formValue.value = {
             user: {
               name: "",
               email: "",
               message: "",
             },
-          }; // 手动清空表单内容
+          };
         })
         .catch((error) => {
           message.error("提交失敗，請再試一次");
           console.error(error);
         })
         .finally(() => {
-          loading.value = false; // 请求完成后，停止加载
-        });
+          loading.value = false;
+        }); // 请求完成后，停止加载
     } else {
       console.log(errors);
-      message.error("提交失敗，請再試一次");
+      message.error("表單有誤，請檢查輸入內容");
     }
   });
 };
@@ -116,7 +140,7 @@ const handleValidateClick = (e) => {
             />
           </n-form-item>
           <n-form-item>
-            <n-button attr-type="button" @click="handleValidateClick">
+            <n-button attr-type="button" @click.prevent="handleValidateClick">
               提交
             </n-button>
           </n-form-item>
