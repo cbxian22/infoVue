@@ -1,10 +1,11 @@
 <script setup>
-console.log("App component is loaded");
-import { NConfigProvider, NMessageProvider } from "naive-ui";
+import { NConfigProvider, NMessageProvider, NSpin } from "naive-ui";
 import Navbar from "./components/Navbar.vue";
-import { computed } from "vue";
-import { useRoute } from "vue-router";
+import { computed, onMounted, ref, nextTick } from "vue";
+import { useRoute, useRouter } from "vue-router";
+
 const route = useRoute();
+const router = useRouter();
 const navbarStyle = computed(() => {
   if (route.name === "home") {
     return {
@@ -21,17 +22,49 @@ const navbarStyle = computed(() => {
     };
   }
 });
+
+const loading = ref(true);
+// 在首次加载时显示加载动画
+onMounted(() => {
+  loading.value = true;
+  nextTick(() => {
+    loading.value = false; // 页面加载完成后停止加载动画
+  });
+});
+
+// 在每次路由切换时显示加载动画
+router.beforeEach(() => {
+  loading.value = true;
+});
+
+router.afterEach(() => {
+  nextTick(() => {
+    loading.value = false; // 路由切换完成后停止加载动画
+  });
+});
 </script>
 
 <template>
   <n-config-provider>
     <n-message-provider>
       <div>
-        <Navbar :style="navbarStyle" />
-        <router-view />
+        <div v-if="loading">
+          <n-spin class="cen" size="large" description="loading..." />
+        </div>
+        <div v-else>
+          <Navbar :style="navbarStyle" />
+          <router-view />
+        </div>
       </div>
     </n-message-provider>
   </n-config-provider>
 </template>
 
-<style scoped></style>
+<style scoped>
+.cen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+</style>
