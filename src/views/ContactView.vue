@@ -76,36 +76,43 @@ const handleValidateClick = (e) => {
 <template>
   <div>
     <n-card title="聯絡我" bordered>
-      <n-form ref="formRef" :label-width="80" :model="formValue" :rules="rules">
-        <n-form-item label="姓名" path="user.name">
-          <n-input
-            v-model:value="formValue.user.name"
-            placeholder="請輸入您的姓名"
-          />
-        </n-form-item>
-        <n-form-item label="Email" path="user.email">
-          <n-input
-            v-model:value="formValue.user.email"
-            placeholder="請輸入您的 Email"
-          />
-        </n-form-item>
-        <n-form-item label="訊息" path="user.message">
-          <n-input
-            type="textarea"
-            v-model:value="formValue.user.message"
-            placeholder="請輸入您的訊息"
-          />
-        </n-form-item>
-        <n-form-item>
-          <n-button
-            attr-type="button"
-            :loading="loading"
-            @click="handleValidateClick"
-          >
-            提交
-          </n-button>
-        </n-form-item>
-      </n-form>
+      <n-spin :show="loading">
+        <n-form
+          ref="formRef"
+          :label-width="80"
+          :model="formValue"
+          :rules="rules"
+        >
+          <n-form-item label="姓名" path="user.name">
+            <n-input
+              v-model:value="formValue.user.name"
+              placeholder="請輸入您的姓名"
+            />
+          </n-form-item>
+          <n-form-item label="Email" path="user.email">
+            <n-input
+              v-model:value="formValue.user.email"
+              placeholder="請輸入您的 Email"
+            />
+          </n-form-item>
+          <n-form-item label="訊息" path="user.message">
+            <n-input
+              type="textarea"
+              v-model:value="formValue.user.message"
+              placeholder="請輸入您的訊息"
+            />
+          </n-form-item>
+          <n-form-item>
+            <n-button
+              attr-type="button"
+              :loading="loading"
+              @click="handleValidateClick"
+            >
+              提交
+            </n-button>
+          </n-form-item>
+        </n-form>
+      </n-spin>
     </n-card>
   </div>
 </template>
