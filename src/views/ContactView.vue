@@ -35,15 +35,14 @@ const rules = {
   },
 };
 
-// 用於控制加載狀態
 const loading = ref(false);
 
 const handleValidateClick = (e) => {
   e.preventDefault();
   formRef.value?.validate((errors) => {
     if (!errors) {
-      // 表单验证通过，发送数据到服务器
-      loading.value = true; // 设置加载状态为true，显示转圈圈
+      //
+      loading.value = true;
       axios
         .post(
           "https://infoserver-v0eq.onrender.com/api/submit",
@@ -98,7 +97,11 @@ const handleValidateClick = (e) => {
           />
         </n-form-item>
         <n-form-item>
-          <n-button attr-type="button" @click="handleValidateClick">
+          <n-button
+            attr-type="button"
+            :loading="loading"
+            @click="handleValidateClick"
+          >
             提交
           </n-button>
         </n-form-item>
