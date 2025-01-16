@@ -30,6 +30,7 @@ const imgSize = ref("imgSize");
   padding: 1.8rem;
   max-width: 30%;
   border-radius: 16px;
+  border: none;
   min-width: 350px;
   max-height: 80%;
   overflow: hidden;

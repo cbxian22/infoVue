@@ -113,7 +113,7 @@ const handleValidateClick = (e) => {
 <template>
   <div>
     <n-card title="聯絡我" bordered>
-      <n-spin :show="loading">
+      <n-spin description="loading" :show="loading">
         <n-form
           ref="formRef"
           :label-width="80"
