@@ -22,10 +22,10 @@ const imgSize = ref("imgSize");
 }
 .card {
   position: absolute;
-  left: 33%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  background-color: rgba(255, 255, 255, 0.9);
+  left: 18%;
+  top: 55%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.7);
   box-sizing: border-box;
   padding: 1.8rem;
   max-width: 30%;
@@ -38,9 +38,9 @@ const imgSize = ref("imgSize");
   .card {
     max-width: 60%;
     padding: 1.2rem;
-    left: 50%;
+    left: 20%;
     top: 50%;
-    transform: translate(-50%, -50%);
+    transform: translateY(-50%, -50%);
   }
 }
 </style>
