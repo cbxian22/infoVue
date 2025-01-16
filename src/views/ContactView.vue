@@ -26,11 +26,24 @@ const rules = {
       required: true,
       message: "請輸入Email",
       trigger: ["input", "blur"],
+      validator: (rule, value) => {
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(value)) {
+          return new Error("請輸入有效的 Email");
+        }
+        return true;
+      },
     },
     message: {
       required: true,
       message: "請輸入訊息",
       trigger: ["input"],
+      validator: (rule, value) => {
+        if (value.trim().length < 5) {
+          return new Error("訊息至少需要5個字");
+        }
+        return true;
+      },
     },
   },
 };
@@ -103,11 +116,7 @@ const handleValidateClick = (e) => {
             />
           </n-form-item>
           <n-form-item>
-            <n-button
-              attr-type="button"
-              :loading="loading"
-              @click="handleValidateClick"
-            >
+            <n-button attr-type="button" @click="handleValidateClick">
               提交
             </n-button>
           </n-form-item>
