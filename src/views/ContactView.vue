@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from "vue";
 import { useMessage } from "naive-ui";
-import { NForm, NFormItem, NInput, NButton, NCard } from "naive-ui";
+import { NForm, NFormItem, NInput, NButton, NCard, NSpin } from "naive-ui";
 import axios from "axios";
 
 const formRef = ref(null);
@@ -35,11 +35,15 @@ const rules = {
   },
 };
 
+// 用於控制加載狀態
+const loading = ref(false);
+
 const handleValidateClick = (e) => {
   e.preventDefault();
   formRef.value?.validate((errors) => {
     if (!errors) {
       // 表单验证通过，发送数据到服务器
+      loading.value = true; // 设置加载状态为true，显示转圈圈
       axios
         .post(
           "https://infoserver-v0eq.onrender.com/api/submit",
@@ -58,6 +62,9 @@ const handleValidateClick = (e) => {
         .catch((error) => {
           message.error("提交失敗，請再試一次");
           console.error(error);
+        })
+        .finally(() => {
+          loading.value = false; // 请求完成后，停止加载
         });
     } else {
       console.log(errors);
