@@ -23,8 +23,8 @@ const imgSize = ref("imgSize");
 .card {
   position: absolute;
   left: 33%;
-  top: 15%;
-  transform: translate(-50%);
+  top: 50%;
+  transform: translate(-50%, -50%);
   background-color: rgba(255, 255, 255, 0.9);
   box-sizing: border-box;
   padding: 1.8rem;
@@ -39,7 +39,7 @@ const imgSize = ref("imgSize");
     max-width: 60%;
     padding: 1.2rem;
     left: 50%;
-    top: 55%;
+    top: 50%;
     transform: translate(-50%, -50%);
   }
 }
