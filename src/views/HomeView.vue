@@ -35,6 +35,7 @@ const imgSize = ref("imgSize");
   max-height: 80%;
   overflow: hidden;
 }
+
 @media (max-width: 768px) {
   .card {
     max-width: 60%;

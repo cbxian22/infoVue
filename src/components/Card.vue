@@ -26,6 +26,9 @@ const imgSet = ref("imgSet");
 </template>
 
 <style scoped>
+.card {
+  /* border: ; */
+}
 .cen {
   text-align: center;
 }

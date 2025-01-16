@@ -111,7 +111,7 @@ const handleValidateClick = (e) => {
 </script>
 
 <template>
-  <div>
+  <div class="box">
     <n-card title="聯絡我" bordered>
       <n-spin description="loading" :show="loading">
         <n-form
@@ -123,20 +123,20 @@ const handleValidateClick = (e) => {
           <n-form-item label="姓名" path="user.name">
             <n-input
               v-model:value="formValue.user.name"
-              placeholder="請輸入您的姓名"
+              placeholder="請輸入姓名"
             />
           </n-form-item>
           <n-form-item label="Email" path="user.email">
             <n-input
               v-model:value="formValue.user.email"
-              placeholder="請輸入您的 Email"
+              placeholder="請輸入Gmail、yahoo信箱網址"
             />
           </n-form-item>
           <n-form-item label="訊息" path="user.message">
             <n-input
               type="textarea"
               v-model:value="formValue.user.message"
-              placeholder="請輸入您的訊息"
+              placeholder="請輸入留言內容"
             />
           </n-form-item>
           <n-form-item>
@@ -150,4 +150,38 @@ const handleValidateClick = (e) => {
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+::v-deep(.n-card--bordered) {
+  border-radius: 10px !important;
+  box-shadow: 0px 2px 4px rgb(61, 61, 102, 0.2);
+}
+.box {
+  transform: translateY(15%);
+  height: 100%;
+  width: 600px;
+  margin: 0 auto;
+}
+::v-deep(.n-card-header__main) {
+  text-align: center;
+}
+::v-deep(.n-form-item-label__text) {
+  border-left: 8px solid #abd6f5; /* 只添加左邊的邊框 */
+  padding-left: 5px;
+}
+::v-deep(.n-form-item-label__asterisk) {
+  display: none;
+}
+.n-input {
+  border-radius: 8px;
+  box-shadow: 0px 2px 4px rgb(61, 61, 102, 0.2);
+  border: none;
+}
+::v-deep(.n-form-item-blank) {
+  justify-content: center;
+}
+.n-button {
+  padding: 25px;
+  background: #93ccf5;
+  border-radius: 5px;
+}
+</style>

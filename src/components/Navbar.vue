@@ -41,10 +41,13 @@ defineProps({
     :options="options"
     mode="horizontal"
     @update:value="handleMenuClick"
-    default-value="/"
     :theme-overrides="menuThemeOverrides"
     responsive
   />
 </template>
 
-<style></style>
+<style>
+.v-overflow {
+  justify-content: center;
+}
+</style>
