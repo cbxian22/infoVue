@@ -2,13 +2,13 @@
 import { NCard } from "naive-ui";
 import { ref } from "vue";
 import imagePath from "@/assets/card.png";
-const imgSize = ref("imgSize");
+const imgSet = ref("imgSet");
 </script>
 
 <template>
   <n-card>
     <div class="cen">
-      <img :src="imagePath" alt="描述文本" :class="imgSize" class="cen" />
+      <img :src="imagePath" alt="我的頭貼" :class="imgSet" class="cen" />
     </div>
     <h2 class="cen">
       Hey, I’m Xian,<br />
@@ -29,12 +29,8 @@ const imgSize = ref("imgSize");
 .cen {
   text-align: center;
 }
-.imgSize {
-  width: 100px !important;
-  height: auto;
+.imgSet {
+  width: 100px;
   border-radius: 50%;
-}
-.n-card {
-  max-width: 350px;
 }
 </style>

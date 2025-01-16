@@ -42,8 +42,8 @@ defineProps({
     mode="horizontal"
     @update:value="handleMenuClick"
     default-value="/"
-    responsive
     :theme-overrides="menuThemeOverrides"
+    responsive
   />
 </template>
 

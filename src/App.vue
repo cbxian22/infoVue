@@ -13,7 +13,7 @@ const navbarStyle = computed(() => {
       top: "0",
       left: "0",
       right: "0",
-      backgroundColor: "rgba(255, 255, 255, 0.5)",
+      backgroundColor: "rgba(255, 255, 255, 0.6)",
     };
   } else {
     return {
@@ -24,22 +24,21 @@ const navbarStyle = computed(() => {
 });
 
 const loading = ref(true);
-// 在首次加载时显示加载动画
+
 onMounted(() => {
   loading.value = true;
   nextTick(() => {
-    loading.value = false; // 页面加载完成后停止加载动画
+    loading.value = false;
   });
 });
 
-// 在每次路由切换时显示加载动画
 router.beforeEach(() => {
   loading.value = true;
 });
 
 router.afterEach(() => {
   nextTick(() => {
-    loading.value = false; // 路由切换完成后停止加载动画
+    loading.value = false;
   });
 });
 </script>

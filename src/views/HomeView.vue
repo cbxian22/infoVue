@@ -25,7 +25,7 @@ const imgSize = ref("imgSize");
   left: 18%;
   top: 55%;
   transform: translateY(-50%);
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(255, 255, 255, 0.85);
   box-sizing: border-box;
   padding: 1.8rem;
   max-width: 30%;
