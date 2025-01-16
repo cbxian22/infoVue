@@ -1,35 +1,50 @@
 <script setup>
-import { ref } from "vue";
+import { ref, defineProps } from "vue";
 import { useRouter } from "vue-router";
 import { NMenu } from "naive-ui";
 
 const router = useRouter();
-
-const menuOptions = ref([
-  { label: "首頁", key: "/" },
-  { label: "關於我", key: "/about" },
-  { label: "作品集", key: "/portfolio" },
-  { label: "聯絡", key: "/contact" },
+const options = ref([
+  { label: "Home", key: "/" },
+  { label: "About", key: "/about" },
+  { label: "Projects", key: "/portfolio" },
+  { label: "Contact", key: "/contact" },
 ]);
 
 const handleMenuClick = (key) => {
   router.push(key);
 };
+
+/**
+ * js 文件下使用这个做类型提示
+ * @type import('naive-ui').GlobalThemeOverrides
+ */
+//export * from './styles';  >
+//export { menuDark } from './menu/styles';  >
+//export type { MenuTheme, MenuThemeVars } from './light';  >
+
+const menuThemeOverrides = {
+  // itemTextColor: "blue",
+  itemHeight: "4rem",
+};
+defineProps({
+  style: {
+    type: Object,
+    default: () => ({}),
+  },
+});
 </script>
 
 <template>
-  <div class="navbar">
-    <n-menu
-      :options="menuOptions"
-      mode="horizontal"
-      @update:value="handleMenuClick"
-    />
-  </div>
+  <n-menu
+    :style="style"
+    :options="options"
+    mode="horizontal"
+    @update:value="handleMenuClick"
+    default-value="/"
+    responsive
+    :theme-overrides="menuThemeOverrides"
+  />
 </template>
 
-<style scoped>
-.navbar {
-  background: #f5f5f5;
-  padding: 1rem;
-}
-</style>
+<style></style>

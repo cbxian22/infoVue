@@ -1,9 +1,46 @@
 <script setup>
-import { NCard } from "naive-ui";
+import Card from "../components/Card.vue";
+import imagePath from "@/assets/cover.jpeg";
+import { ref } from "vue";
+const imgSize = ref("imgSize");
 </script>
 
 <template>
-  <n-card title="歡迎來到我的個人網站！" bordered>
-    <p>這裡展示了我的經歷與作品。</p>
-  </n-card>
+  <div>
+    <img :src="imagePath" alt="描述文本" :class="imgSize" />
+    <Card class="card" />
+  </div>
 </template>
+
+<style scoped>
+.imgSize {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  object-position: center;
+  object-position: top;
+}
+.card {
+  position: absolute;
+  left: 18%;
+  top: 55%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.7);
+  box-sizing: border-box;
+  padding: 1.8rem;
+  max-width: 30%;
+  border-radius: 16px;
+  min-width: 350px;
+  max-height: 80%;
+  overflow: hidden;
+}
+@media (max-width: 768px) {
+  .card {
+    max-width: 60%;
+    padding: 1.2rem;
+    left: 20%;
+    top: 55%;
+    transform: translateY(-50%, -50%);
+  }
+}
+</style>
