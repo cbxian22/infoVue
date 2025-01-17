@@ -14,20 +14,22 @@ const imgSet = ref("imgSet");
       Hey, I’m Xian,<br />
       a motivated programming learner.
     </h2>
-    <p>
-      I’m interested in expressing the things I love through web development.
-      <br />
-      <br />
-      Apart from programming, I enjoy freediving, playing badminton, and
-      photography. If you’re a coffee lover, feel free to contact me — I’d be
-      happy to brew a cup of pour-over coffee and share it with you.
-    </p>
+    <div>
+      <p>
+        I’m interested in expressing the things I love through web development.
+      </p>
+      <p>
+        Apart from programming, I enjoy freediving, playing badminton, and
+        photography. If you’re a coffee lover, feel free to contact me — I’d be
+        happy to brew a cup of pour-over coffee and share it with you.
+      </p>
+    </div>
   </n-card>
 </template>
 
 <style scoped>
 .card {
-  box-shadow: 0px 2px 10px rgb(61, 61, 102, 0.5);
+  box-shadow: 0px 2px 20px rgb(61, 61, 102, 0.6);
 }
 .cen {
   text-align: center;
@@ -35,5 +37,10 @@ const imgSet = ref("imgSet");
 .imgSet {
   width: 100px;
   border-radius: 50%;
+}
+p {
+  margin-bottom: 15px;
+  line-height: 1.6;
+  text-align-last: left;
 }
 </style>

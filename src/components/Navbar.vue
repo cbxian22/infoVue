@@ -27,7 +27,7 @@ const handleMenuClick = (key) => {
 //export type { MenuTheme, MenuThemeVars } from './light';  >
 
 const menuThemeOverrides = {
-  // itemTextColor: "blue",
+  itemTextColor: "#3D3D66",
   itemHeight: "4rem",
 };
 defineProps({
@@ -52,15 +52,21 @@ defineProps({
 
 <style>
 .n-menu {
-  box-shadow: 0px 2px 4px rgb(61, 61, 102, 0.2);
+  box-shadow: 0px 2px 20px rgb(61, 61, 102, 0.2);
   z-index: 10;
 }
 .v-overflow {
   justify-content: center;
 }
 
-/*  以下只是發現怎麼更改預設，以此註解 */
-/* .n-menu-item-content-header {
-  --n-item-text-color-hover-horizontal: yellow;
-} */
+/*  以下是發現怎麼更改預設，以此註解 */
+.n-menu-item-content-header {
+  --n-item-text-color-hover-horizontal: #007fbf;
+  --n-item-text-color-active-hover-horizontal: #007fbf;
+}
+.n-menu.n-menu--horizontal
+  .n-menu-item-content.n-menu-item-content--selected
+  .n-menu-item-content-header {
+  color: #007fbf;
+}
 </style>

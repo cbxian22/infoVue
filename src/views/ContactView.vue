@@ -86,7 +86,6 @@ const handleValidateClick = (e) => {
         )
         .then((response) => {
           message.success("提交成功！");
-          // 手动清空表单内容
           formValue.value = {
             user: {
               name: "",
@@ -101,7 +100,7 @@ const handleValidateClick = (e) => {
         })
         .finally(() => {
           loading.value = false;
-        }); // 请求完成后，停止加载
+        });
     } else {
       console.log(errors);
       message.error("表單有誤，請檢查輸入內容");
@@ -187,4 +186,9 @@ const handleValidateClick = (e) => {
   background: #93ccf5;
   border-radius: 5px;
 }
+
+/* --n-loading-color */
+/* --n-border-hover */
+/*     --n-caret-color */
+/* --n-box-shadow-focus */
 </style>

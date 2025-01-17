@@ -48,7 +48,7 @@ router.afterEach(() => {
     <n-message-provider>
       <div>
         <div v-if="loading">
-          <n-spin class="cen" size="large" description="loading..." />
+          <n-spin class="loadpage" size="large" description="loading..." />
         </div>
         <div v-else>
           <Navbar :style="navbarStyle" />
@@ -60,7 +60,7 @@ router.afterEach(() => {
 </template>
 
 <style scoped>
-.cen {
+.loadpage {
   display: flex;
   justify-content: center;
   align-items: center;
