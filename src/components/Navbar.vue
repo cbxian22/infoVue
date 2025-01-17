@@ -1,9 +1,11 @@
 <script setup>
 import { ref, defineProps } from "vue";
-import { useRouter } from "vue-router";
+import { useRouter, useRoute } from "vue-router";
 import { NMenu } from "naive-ui";
 
 const router = useRouter();
+const route = useRoute();
+const activeKey = ref(route.path); // 設定當前活躍的路徑
 const options = ref([
   { label: "Home", key: "/" },
   { label: "About", key: "/about" },
@@ -13,6 +15,7 @@ const options = ref([
 
 const handleMenuClick = (key) => {
   router.push(key);
+  activeKey.value = key;
 };
 
 /**
@@ -26,6 +29,11 @@ const handleMenuClick = (key) => {
 const menuThemeOverrides = {
   // itemTextColor: "blue",
   itemHeight: "4rem",
+  itemTextColorActive: "white",
+  // --n-item-text-color-hover-horizontal:
+
+  itemColorActive: "blue", // 活躍項目背景顏色
+  itemColorHover: "#d9d9d9",
 };
 defineProps({
   style: {
@@ -37,6 +45,7 @@ defineProps({
 
 <template>
   <n-menu
+    :value="activeKey"
     :style="style"
     :options="options"
     mode="horizontal"
@@ -54,4 +63,9 @@ defineProps({
 .v-overflow {
   justify-content: center;
 }
+
+/*  以下只是發現怎麼更改預設，以此註解 */
+/* .n-menu-item-content-header {
+  --n-item-text-color-hover-horizontal: yellow;
+} */
 </style>
