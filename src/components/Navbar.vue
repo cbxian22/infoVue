@@ -47,6 +47,10 @@ defineProps({
 </template>
 
 <style>
+.n-menu {
+  box-shadow: 0px 2px 4px rgb(61, 61, 102, 0.2);
+  z-index: 10;
+}
 .v-overflow {
   justify-content: center;
 }

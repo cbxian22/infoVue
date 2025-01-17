@@ -165,7 +165,7 @@ const handleValidateClick = (e) => {
   text-align: center;
 }
 ::v-deep(.n-form-item-label__text) {
-  border-left: 8px solid #abd6f5; /* 只添加左邊的邊框 */
+  border-left: 8px solid #abd6f5;
   padding-left: 5px;
 }
 ::v-deep(.n-form-item-label__asterisk) {

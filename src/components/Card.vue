@@ -27,7 +27,7 @@ const imgSet = ref("imgSet");
 
 <style scoped>
 .card {
-  /* border: ; */
+  box-shadow: 0px 2px 10px rgb(61, 61, 102, 0.5);
 }
 .cen {
   text-align: center;
