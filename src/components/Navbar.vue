@@ -29,11 +29,6 @@ const handleMenuClick = (key) => {
 const menuThemeOverrides = {
   // itemTextColor: "blue",
   itemHeight: "4rem",
-  itemTextColorActive: "white",
-  // --n-item-text-color-hover-horizontal:
-
-  itemColorActive: "blue", // 活躍項目背景顏色
-  itemColorHover: "#d9d9d9",
 };
 defineProps({
   style: {

@@ -113,7 +113,10 @@ const handleValidateClick = (e) => {
 <template>
   <div class="box">
     <n-card title="聯絡我" bordered>
-      <n-spin description="loading" :show="loading">
+      <n-spin
+        description="Please wait, information is being uploaded..."
+        :show="loading"
+      >
         <n-form
           ref="formRef"
           :label-width="80"
