@@ -51,8 +51,15 @@ const imgSize = ref("imgSize");
   width: 100%;
   height: 100vh;
   object-fit: cover;
-  object-position: top;
+  object-position: 100% top; /* 初始將人像靠右顯示 */
 }
+
+@media (max-width: 768px) {
+  .imgSize {
+    object-position: 80% top; /* 在小螢幕時微調，顯示更多右側內容 */
+  }
+}
+
 .card {
   position: absolute;
   left: 18%;
@@ -71,23 +78,13 @@ const imgSize = ref("imgSize");
 
 @media (max-width: 768px) {
   .card {
-    width: 100%; /* 設為 100% */
+    width: 100%;
     left: 0;
     right: 0;
-    margin: 0 auto; /* 水平置中 */
+    margin: 0 auto;
     padding: 1.2rem;
     top: 50%;
     transform: translateY(-50%);
   }
-}
-</style>
-
-<style>
-/* 全域樣式 */
-html,
-body {
-  overflow-x: hidden; /* 禁止水平滾動 */
-  margin: 0;
-  padding: 0;
 }
 </style>
