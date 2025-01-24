@@ -45,7 +45,7 @@ import { NCard, NCarousel, NIcon } from "naive-ui";
     </template>
   </n-carousel>
 </template>
-
+<!-- 
 <style scoped>
 .carousel-img {
   width: 100%;
@@ -107,5 +107,49 @@ import { NCard, NCarousel, NIcon } from "naive-ui";
 .custom-dots li.is-active {
   width: 40px;
   background: #fff;
+}
+</style> -->
+<style scoped>
+::v-deep(.n-card--bordered) {
+  border-radius: 10px !important;
+  box-shadow: 0px 2px 4px rgb(61, 61, 102, 0.2);
+}
+
+.box {
+  transform: translateY(15%);
+  height: 100%;
+  width: 600px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .box {
+    width: 100%; /* 小螢幕時寬度調整為100% */
+    padding: 0 10px; /* 增加左右內間距避免貼邊 */
+  }
+}
+
+::v-deep(.n-card-header__main) {
+  text-align: center;
+}
+::v-deep(.n-form-item-label__text) {
+  border-left: 8px solid #abd6f5;
+  padding-left: 5px;
+}
+::v-deep(.n-form-item-label__asterisk) {
+  display: none;
+}
+.n-input {
+  border-radius: 8px;
+  box-shadow: 0px 2px 4px rgb(61, 61, 102, 0.2);
+  border: none;
+}
+::v-deep(.n-form-item-blank) {
+  justify-content: center;
+}
+.n-button {
+  padding: 25px;
+  background: #93ccf5;
+  border-radius: 5px;
 }
 </style>
