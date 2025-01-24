@@ -153,42 +153,56 @@ const handleValidateClick = (e) => {
 </template>
 
 <style scoped>
-::v-deep(.n-card--bordered) {
-  border-radius: 10px !important;
-  box-shadow: 0px 2px 4px rgb(61, 61, 102, 0.2);
+/* 禁止水平與垂直滾動 */
+html,
+body {
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  height: 100%; /* 確保滿屏 */
 }
 
 /* 表單容器 */
 .box {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%; /* 寬度填滿 */
-  height: 100%; /* 高度填滿 */
-  display: flex; /* 使用彈性佈局居中 */
+  display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px; /* 增加內邊距，防止緊貼邊緣 */
+  height: 100vh; /* 高度為視窗高度 */
+  width: 100%; /* 寬度為視窗寬度 */
+  padding: 10px; /* 避免貼邊 */
+  box-sizing: border-box; /* 計算寬度包含 padding */
+}
+
+/* Naive UI 卡片樣式調整 */
+::v-deep(.n-card--bordered) {
+  border-radius: 10px !important;
+  box-shadow: 0px 2px 4px rgb(61, 61, 102, 0.2);
+  width: 100%; /* 確保卡片自適應容器 */
+  max-width: 600px; /* 最大寬度控制 */
 }
 
 ::v-deep(.n-card-header__main) {
   text-align: center;
 }
+
+/* 表單標籤樣式 */
 ::v-deep(.n-form-item-label__text) {
   border-left: 8px solid #abd6f5;
   padding-left: 5px;
 }
+
 ::v-deep(.n-form-item-label__asterisk) {
   display: none;
 }
+
+/* 輸入框樣式 */
 .n-input {
   border-radius: 8px;
   box-shadow: 0px 2px 4px rgb(61, 61, 102, 0.2);
   border: none;
 }
-::v-deep(.n-form-item-blank) {
-  justify-content: center;
-}
+
+/* 表單提交按鈕樣式 */
 .n-button {
   padding: 25px;
   background: #93ccf5;
