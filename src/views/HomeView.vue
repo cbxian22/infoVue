@@ -12,7 +12,7 @@ const imgSize = ref("imgSize");
   </div>
 </template>
 
-<style scoped>
+<!-- <style scoped>
 .imgSize {
   width: 100%;
   height: 100vh;
@@ -44,5 +44,50 @@ const imgSize = ref("imgSize");
     top: 50%;
     transform: translateY(-50%, -50%);
   }
+}
+</style> -->
+<style scoped>
+.imgSize {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  object-position: top;
+}
+.card {
+  position: absolute;
+  left: 18%;
+  top: 55%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.85);
+  box-sizing: border-box;
+  padding: 1.8rem;
+  max-width: 30%;
+  border-radius: 16px;
+  border: none;
+  min-width: 350px;
+  max-height: 80%;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .card {
+    width: 100%; /* 設為 100% */
+    left: 0;
+    right: 0;
+    margin: 0 auto; /* 水平置中 */
+    padding: 1.2rem;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+</style>
+
+<style>
+/* 全域樣式 */
+html,
+body {
+  overflow-x: hidden; /* 禁止水平滾動 */
+  margin: 0;
+  padding: 0;
 }
 </style>

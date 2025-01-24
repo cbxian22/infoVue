@@ -32,6 +32,7 @@ const imgSet = ref("imgSet");
   box-shadow: 0px 2px 20px rgb(61, 61, 102, 0.6);
 }
 .cen {
+  color: #3d3d66;
   text-align: center;
 }
 .imgSet {
@@ -42,5 +43,6 @@ p {
   margin-bottom: 15px;
   line-height: 1.6;
   text-align-last: left;
+  color: #3d3d66;
 }
 </style>
