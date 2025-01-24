@@ -157,12 +157,20 @@ const handleValidateClick = (e) => {
   border-radius: 10px !important;
   box-shadow: 0px 2px 4px rgb(61, 61, 102, 0.2);
 }
+
+/* 表單容器 */
 .box {
-  transform: translateY(15%);
-  height: 100%;
-  width: 600px;
-  margin: 0 auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%; /* 寬度填滿 */
+  height: 100%; /* 高度填滿 */
+  display: flex; /* 使用彈性佈局居中 */
+  justify-content: center;
+  align-items: center;
+  padding: 10px; /* 增加內邊距，防止緊貼邊緣 */
 }
+
 ::v-deep(.n-card-header__main) {
   text-align: center;
 }
@@ -186,9 +194,4 @@ const handleValidateClick = (e) => {
   background: #93ccf5;
   border-radius: 5px;
 }
-
-/* --n-loading-color */
-/* --n-border-hover */
-/*     --n-caret-color */
-/* --n-box-shadow-focus */
 </style>
